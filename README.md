@@ -125,5 +125,33 @@ service/service-frontend   ClusterIP   10.233.17.252   <none>        80/TCP    9
 ```
 ### Создание сетевого взаимодействия
 
+#### Отсутствие другого доступа 
+https://github.com/Arseny-Kornilov/Kubernetes_8_Kornilov/blob/main/network_default.yaml
+
 #### Между frontend и backend
 https://github.com/Arseny-Kornilov/Kubernetes_8_Kornilov/blob/main/network_front_back.yaml
+
+#### Между backend и cache
+https://github.com/Arseny-Kornilov/Kubernetes_8_Kornilov/blob/main/network_cache.yaml
+
+### Проверка сетевого взаимодействия
+
+#### Доступ от frontend к backend
+```console
+admin@kube-master-01:~$ kubectl exec -it service/service-frontend -n app -- curl --silent -i service-backend.app.svc.cluster.local | grep Server
+Server: nginx/1.24.0
+```
+
+#### Доступ от backend к cache
+```console
+admin@kube-master-01:~$ kubectl exec -it service/service-backend -n app -- curl --silent -i service-cache.app.svc.cluster.local | grep Server
+Server: nginx/1.24.0
+```
+
+#### Отстутствие в иных случаях
+```console
+admin@kube-master-01:~$ kubectl exec -it service/service-frontend -n app -- curl --silent -i service-cache.app.svc.cluster.local | grep Server
+command terminated with exit code 28
+admin@kube-master-01:~$ kubectl exec -it service/service-cache -n app -- curl --silent -i service-frontend.app.svc.cluster.local | grep Server
+command terminated with exit code 28
+```

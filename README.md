@@ -9,6 +9,9 @@
 ## Решение
 ### Создание стенда
 <img width="967" height="301" alt="image" src="https://github.com/user-attachments/assets/f2f0923a-96fb-48ef-88da-fcef58c32c4b" />
+
+
+
 ### Создание inventory
 ```console
 all:

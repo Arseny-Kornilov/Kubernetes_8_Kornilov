@@ -111,3 +111,19 @@ kube-system   nodelocaldns-82xrs                         1/1     Running   0    
 kube-system   nodelocaldns-8wqtz                         1/1     Running   0          14m
 kube-system   nodelocaldns-s6w8x                         1/1     Running   0          14m
 ```
+### Развертывание Service + Deployment
+```console
+NAME                                      READY   STATUS    RESTARTS   AGE     IP             NODE    NOMINATED NODE   READINESS GATES
+pod/deployment-backend-59f8c49bdb-zqcwb   1/1     Running   0          5m33s   10.233.75.3    node2   <none>           <none>
+pod/deployment-cache-69b486bc58-8x8db     1/1     Running   0          2m13s   10.233.71.2    node3   <none>           <none>
+pod/deployment-frontend-8cc5b69b4-lrxn4   1/1     Running   0          9m31s   10.233.74.66   node4   <none>           <none>
+
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE     SELECTOR
+service/service-backend    ClusterIP   10.233.9.28     <none>        80/TCP    5m25s   app=backend
+service/service-cache      ClusterIP   10.233.32.40    <none>        80/TCP    2m6s    app=cache
+service/service-frontend   ClusterIP   10.233.17.252   <none>        80/TCP    9m20s   app=frontend
+```
+### Создание сетевого взаимодействия
+
+#### Между frontend и backend
+https://github.com/Arseny-Kornilov/Kubernetes_8_Kornilov/blob/main/network_front_back.yaml

@@ -1,0 +1,22 @@
+admin@kube-master-01:~$ cat deployment-frontend.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deployment-frontend
+  name: deployment-frontend
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend-multitool
+          image: wbitt/network-multitool

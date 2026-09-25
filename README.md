@@ -10,7 +10,7 @@
 ### Создание стенда
 <img width="967" height="301" alt="image" src="https://github.com/user-attachments/assets/f2f0923a-96fb-48ef-88da-fcef58c32c4b" />
 ### Создание inventory
-``` console
+```
 all:
   hosts:
     node1:
@@ -49,7 +49,7 @@ all:
       hosts: {}
 ```
 ### Применение конфигурации Ansible для узлов кластера и создание kubeconfig-файл для пользователя admin:
-
+```
 root@kube-master-01:~/kubespray# ansible-playbook -i inventory/mycluster/hosts.yaml -u admin -b -v --private-key=/root/.ssh/id_rsa cluster.yml
 ------ ВЫВОД ------
 TASK [network_plugin/calico : Check if inventory match current cluster configuration] *******************************************************************************************************************************************************
@@ -67,3 +67,4 @@ node1                      : ok=754  changed=150  unreachable=0    failed=0    s
 node2                      : ok=514  changed=94   unreachable=0    failed=0    skipped=780  rescued=0    ignored=1
 node3                      : ok=514  changed=94   unreachable=0    failed=0    skipped=779  rescued=0    ignored=1
 node4                      : ok=514  changed=94   unreachable=0    failed=0    skipped=779  rescued=0    ignored=1
+```

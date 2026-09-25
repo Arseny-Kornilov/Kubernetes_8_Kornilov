@@ -10,8 +10,8 @@
 ### Создание стенда
 <img width="967" height="301" alt="image" src="https://github.com/user-attachments/assets/f2f0923a-96fb-48ef-88da-fcef58c32c4b" />
 ### Создание inventory
-```
- all:
+```console
+all:
   hosts:
     node1:
       ansible_host: "{{ ip_node1_host_host }}"
@@ -48,6 +48,7 @@
     calico_rr:
       hosts: {}
 ```
+
 ### Применение конфигурации Ansible для узлов кластера и создание kubeconfig-файл для пользователя admin:
 ```console
 root@kube-master-01:~/kubespray# ansible-playbook -i inventory/mycluster/hosts.yaml -u admin -b -v --private-key=/root/.ssh/id_rsa cluster.yml

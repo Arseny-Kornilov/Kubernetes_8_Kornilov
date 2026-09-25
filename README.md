@@ -72,3 +72,42 @@ node2                      : ok=514  changed=94   unreachable=0    failed=0    s
 node3                      : ok=514  changed=94   unreachable=0    failed=0    skipped=779  rescued=0    ignored=1
 node4                      : ok=514  changed=94   unreachable=0    failed=0    skipped=779  rescued=0    ignored=1
 ```
+
+
+### Проверка нод
+```console
+admin@kube-master-01:~$ kubectl get nodes
+NAME    STATUS   ROLES           AGE     VERSION
+node1   Ready    control-plane   9m27s   v1.28.2
+node2   Ready    <none>          8m34s   v1.28.2
+node3   Ready    <none>          8m29s   v1.28.2
+node4   Ready    <none>          8m29s   v1.28.2
+```
+
+### Проверка подов
+```console
+admin@kube-master-01:~$ kubectl get po -A
+NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE
+kube-system   calico-kube-controllers-5fb8ccdcd6-kmxjj   1/1     Running   0          14m
+kube-system   calico-node-5qcv4                          1/1     Running   0          16m
+kube-system   calico-node-7949w                          1/1     Running   0          16m
+kube-system   calico-node-9msxv                          1/1     Running   0          16m
+kube-system   calico-node-dgs7f                          1/1     Running   0          16m
+kube-system   coredns-67cb94d654-bkv4s                   1/1     Running   0          14m
+kube-system   coredns-67cb94d654-jkc25                   1/1     Running   0          14m
+kube-system   dns-autoscaler-7b6c6d8b5b-2j9jg            1/1     Running   0          14m
+kube-system   kube-apiserver-node1                       1/1     Running   1          17m
+kube-system   kube-controller-manager-node1              1/1     Running   2          17m
+kube-system   kube-proxy-hrgfk                           1/1     Running   0          16m
+kube-system   kube-proxy-mgdwl                           1/1     Running   0          16m
+kube-system   kube-proxy-q256j                           1/1     Running   0          16m
+kube-system   kube-proxy-vcfr7                           1/1     Running   0          16m
+kube-system   kube-scheduler-node1                       1/1     Running   1          17m
+kube-system   nginx-proxy-node2                          1/1     Running   0          16m
+kube-system   nginx-proxy-node3                          1/1     Running   0          16m
+kube-system   nginx-proxy-node4                          1/1     Running   0          16m
+kube-system   nodelocaldns-22lvx                         1/1     Running   0          14m
+kube-system   nodelocaldns-82xrs                         1/1     Running   0          14m
+kube-system   nodelocaldns-8wqtz                         1/1     Running   0          14m
+kube-system   nodelocaldns-s6w8x                         1/1     Running   0          14m
+```
